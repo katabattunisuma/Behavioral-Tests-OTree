@@ -1,0 +1,46 @@
+from otree.api import *
+
+
+doc = """
+Your app description
+"""
+
+
+class C(BaseConstants):
+    NAME_IN_URL = 'Itroduce'
+    PLAYERS_PER_GROUP = None
+    NUM_ROUNDS = 1
+
+
+class Subsession(BaseSubsession):
+    pass
+
+
+class Group(BaseGroup):
+    pass
+
+
+class Player(BasePlayer):
+    pass
+
+
+# PAGES
+class Page1(Page):
+    pass
+
+class Page2(Page):
+    pass
+
+class MyPage(Page):
+    pass
+
+
+class ResultsWaitPage(WaitPage):
+    pass
+
+
+class Results(Page):
+    pass
+
+
+page_sequence = [Page1,Page2,MyPage]
