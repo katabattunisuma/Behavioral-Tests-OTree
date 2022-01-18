@@ -54,7 +54,7 @@ class MyPage(Page):
     def before_next_page(player: Player, timeout_happened):
 
         if player.number_entered == player.result1:
-            player.payoff += C.Payment_for_one_correct
+            player.payoff = C.Payment_for_one_correct
         else:
             player.payoff = 0
 

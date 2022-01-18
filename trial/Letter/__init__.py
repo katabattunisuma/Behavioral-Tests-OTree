@@ -15,10 +15,7 @@ class C(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    def creating_session(player):
-        # before any page is shown we create initial tasks for each of the players
-        for p in player.get_players():
-            p.task()
+    pass
 
 
 class Group(BaseGroup):
@@ -29,6 +26,7 @@ class Player(BasePlayer):
     number_entered = models.IntegerField(label="Enter your answer")
     result1 = models.IntegerField()
     final_tokens = models.IntegerField(initial=0)
+    #my_page_timeout_seconds = models.IntegerField(initial=120)
 
 
 
@@ -56,8 +54,9 @@ class MyPage(Page):
             "ch":ch
         }
 
+
     @staticmethod
-    def before_next_page(player: Player, timeout_happened):
+    def before_next_page(player: Player,timeout_happened):
 
         if player.number_entered == player.result1:
             player.payoff += C.Payment_for_one_correct
@@ -78,8 +77,8 @@ class Final_Results(Page):
         for temp in all_players:
             if temp.payoff == 1:
                 player.final_tokens+=1
-            else:
-                player.final_tokens=0
+            '''else:
+                player.final_tokens=0'''
 
 
 class Results(Page):
