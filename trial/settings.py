@@ -13,10 +13,15 @@ SESSION_CONFIGS = [
     dict(
         name='dictator', app_sequence=['dictator', 'payment_info'], num_demo_participants=2
     ),
-dict(
+    dict(
         name='Letter', display_name="Letter identification test", app_sequence=['Letter', 'payment_info'], num_demo_participants=1
     ),
-
+    dict(
+        name='ravens',
+        display_name='Raven\'s Matrix',
+        num_demo_participants=1,
+        app_sequence=['ravens']
+    ),
 
 ]
 

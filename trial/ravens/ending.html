@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+
+
+{% block content %}
+<p>
+This is the end of the study. Thanks for participating!
+</p>
+
+
+    {% next_button %}
+
+{{ form.errors }}
+{% endblock %}
