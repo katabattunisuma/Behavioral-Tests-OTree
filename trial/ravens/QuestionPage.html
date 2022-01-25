@@ -2,14 +2,14 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Make your choice
+<h4>Question {{ player.round_number }} of {{ Constants.num_rounds }} </h4>
 {% endblock %}
 
 
 {% block content %}
-    <p>Question {{ player.round_number }} of {{ Constants.num_rounds }} </p>
+    <p></p>
 
-    {% include Constants.instructions_template %}
+    <!-- {% include Constants.instructions_template %}-->
 
     {#    <div style="text-align:center">#}
      <!--<img src="{% static image_path %}" height="450" width="420"/>-->

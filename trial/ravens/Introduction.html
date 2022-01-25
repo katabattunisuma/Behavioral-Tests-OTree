@@ -2,28 +2,25 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Part III Solving puzzles
+<h3 style="text-align: center">Examples</h3>
 {% endblock %}
 
 {% block content %}
 
-    {% include Constants.instructions_template %}
+    <!-- {% include Constants.instructions_template %}-->
 
-    <p>
-        For example, for the following matrix, the correct pattern is 8.
-    </p>
 
     <br/>
 
 
     <div style="text-align:center">
-    <img src="{% static "ravens/example.jpg" %}"/>
+    <img src="{% static "ravens/example.png" %}"/ width="900" height="350">
     </div>
 
-
-    <div style="text-align:right">
+<br/>
+    <div style="text-align:center">
         <p > Click next to start solving the problems. </p>
-        <br/>
+
     {% next_button %}
     </div>
 

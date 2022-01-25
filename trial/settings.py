@@ -20,7 +20,7 @@ SESSION_CONFIGS = [
         name='ravens',
         display_name='Raven\'s Matrix',
         num_demo_participants=1,
-        app_sequence=['ravens']
+        app_sequence=['ravens','payment_info']
     ),
 
 ]

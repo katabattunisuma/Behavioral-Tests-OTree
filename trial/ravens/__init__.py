@@ -17,8 +17,8 @@ class Constants(BaseConstants):
     players_per_group = None
     minutes_given = 5
     payment_per_question = 1
-    payment_in_points = 3
-    num_rounds = 12
+    payment_in_points = 2
+    num_rounds = 8
     answer_keys = [4, 2, 2, 1, 2, 7, 3, 5, 2, 5, 6, 4]
     instructions_template = 'ravens/Instructions.html'
 
@@ -52,9 +52,13 @@ class StartPage(Page):
             #print('This is the start of Ravens tests')
         return player.round_number == 1 #and (not player.session.config['debug'])
 
+class Intro(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == 1
 
 class Introduction(Page):
-    timeout_seconds = 120
+    #timeout_seconds = 120
 
     @staticmethod
     def is_displayed(player: Player):
@@ -97,7 +101,7 @@ class QuestionPage(Page):
 
 
 class Results(Page):
-    timeout_seconds = 60
+    #timeout_seconds = 60
 
     @staticmethod
     def is_displayed(player: Player):
@@ -122,6 +126,7 @@ class Results(Page):
 
 page_sequence = [
     #StartPage,
+    Intro,
     Introduction,
     QuestionPage,
     Results,
