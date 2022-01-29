@@ -70,6 +70,13 @@ class Introduction(Page):
         player.participant.vars['expiry_timestamp'] = time.time() + Constants.minutes_given * 60
 
 
+class Last(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == Constants.num_rounds
+
+
+
 class QuestionPage(Page):
     form_model = 'player'
     form_fields = ['answer']
@@ -130,4 +137,5 @@ page_sequence = [
     Introduction,
     QuestionPage,
     Results,
+    Last,
 ]

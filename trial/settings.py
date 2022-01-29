@@ -22,6 +22,12 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
         app_sequence=['ravens','payment_info']
     ),
+    dict(
+        name='Hidden_lies',
+        display_name='Hidden Lies Task',
+        num_demo_participants=1,
+        app_sequence=['Hidden_lies','payment_info']
+    ),
 
 ]
 

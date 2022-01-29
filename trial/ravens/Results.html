@@ -2,22 +2,20 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Results
+<h2 style="text-align: center">Results</h2><br>
 {% endblock %}
 
 {% block content %}
     <div style="font-size:16px;text-align:center">
     <p>
         You have completed all problems.
-    </p>
-    <p>
-        You have correctly solved {{ total_correct }} problems.
-    </p>
-    <p>
-        Your total payment for this part is RMB  {{ earnings }}.
+        <br>
+    You have correctly solved <b>{{ total_correct }}</b> problems correctly.
+
     </p>
 
-    <div style="text-align:right">
+
+    <div style="text-align:center">
         {% next_button %}
     </div>
 {% endblock %}
