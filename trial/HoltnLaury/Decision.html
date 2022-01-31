@@ -1,0 +1,37 @@
+{{ block title }}
+ <style>
+     th, td {
+         border:  solid black;
+         padding: 15px;
+         }
+     table{
+         margin-left: auto;
+         margin-right: auto;
+     }
+ </style>
+       {{ endblock }}
+{{ block content }}
+<br><br>
+<div style="align-items: center">
+    <table>
+  <tr >
+    <th></th>
+    <th>Option A</th>
+    <th>Option B</th>
+      <th>Your choice A or B</th>
+  </tr>
+  <tr>
+    <td>Decision {{player.round_number}} </td>
+    <td> {{number1}} tokens if dice is 1<br> {{number2}} tokens if dice is 2-10</td>
+    <td> {{number3}} tokens if dice is 1<br> {{number4}} tokens if dice is 2-10</td>
+      <td>{{ formfields }}</td>
+  </tr>
+
+</table>
+
+</div><br><br>
+
+<div style="text-align: center">
+    {{ next_button }}
+</div>
+{{ endblock }}

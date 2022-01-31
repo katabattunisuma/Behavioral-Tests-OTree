@@ -28,6 +28,12 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
         app_sequence=['Hidden_lies','payment_info']
     ),
+    dict(
+        name='HoltnLaury',
+        display_name='Holt and Laury',
+        num_demo_participants=1,
+        app_sequence=['HoltnLaury','payment_info']
+    ),
 
 ]
 
