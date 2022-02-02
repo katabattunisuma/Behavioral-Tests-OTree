@@ -3,16 +3,12 @@ from os import environ
 
 SESSION_CONFIGS = [
 
-    dict(
-        name='survey', app_sequence=['survey', 'payment_info'], num_demo_participants=1
-    ),
+
 
     dict(
         name='minus', display_name="Stress Test", app_sequence=['Itroduce','minus', 'payment_info'], num_demo_participants=1
     ),
-    dict(
-        name='dictator', app_sequence=['dictator', 'payment_info'], num_demo_participants=2
-    ),
+
     dict(
         name='Letter', display_name="Letter identification test", app_sequence=['Letter', 'payment_info'], num_demo_participants=1
     ),
@@ -23,16 +19,20 @@ SESSION_CONFIGS = [
         app_sequence=['ravens','payment_info']
     ),
     dict(
+        name='HoltnLaury',
+        display_name='Holt and Laury',
+        num_demo_participants=1,
+        app_sequence=['HoltnLaury','payment_info']
+    ),
+    dict(
         name='Hidden_lies',
         display_name='Hidden Lies Task',
         num_demo_participants=1,
         app_sequence=['Hidden_lies','payment_info']
     ),
+
     dict(
-        name='HoltnLaury',
-        display_name='Holt and Laury',
-        num_demo_participants=1,
-        app_sequence=['HoltnLaury','payment_info']
+        name='survey',  display_name='Survey', app_sequence=['survey', 'payment_info'], num_demo_participants=1
     ),
 
 ]

@@ -1,9 +1,10 @@
 {{ block title }}
-    Please subtract the numbers
+
 {{ endblock }}
 {{ block content }}
-
-    {{number1 }} - {{number2}} = ?
+<p>Question {{player.round_number}} of {{C.NUM_ROUNDS}}</p>
+<h5> Please subtract the numbers</h5><br>
+<h3><b>{{number1 }} - {{number2}} = ?</b></h3>
     {% formfields %}
     {{ next_button }}
 

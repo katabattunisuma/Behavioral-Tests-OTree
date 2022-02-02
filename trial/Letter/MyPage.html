@@ -1,10 +1,23 @@
 {{ block title }}
+<style>
+    h5{
+  width: 580px;
+  padding: 10px;
+  border: 1.5px solid black;
+  margin: 0;
+}
+</style>
+
 {{ endblock }}
 {{ block content }}
-Count the letter <b>{{ch}} </b>in the paragraph below:
-    <br><br>
+<h4>Question {{player.round_number}} of {{C.NUM_ROUNDS}}</h4><br>
+<h6>Count the letter <b>{{ch}} </b>in the paragraph below:</h6>
+    <br>
+<div>
 <h5> {{text}}</h5><br>
+</div>
     {{ formfields }}
     {{ next_button }}
+
 
 {{ endblock }}
