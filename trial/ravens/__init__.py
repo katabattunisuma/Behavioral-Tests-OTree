@@ -32,6 +32,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    final_tokens=models.IntegerField(initial=0)
     answer = models.IntegerField(choices=[1, 2, 3, 4, 5, 6, 7, 8])
     ans_correct = models.BooleanField()
 
@@ -116,6 +117,11 @@ class Results(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
+        all_players = player.in_all_rounds()
+        player.final_tokens = 0
+        for temp in all_players:
+            if temp.payoff !=0:
+                player.final_tokens += 2
         return {
             'total_correct': sum([p.ans_correct for p in player.in_all_rounds()]),
             'earnings': sum([p.ans_correct for p in player.in_all_rounds()])

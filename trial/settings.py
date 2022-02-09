@@ -6,16 +6,22 @@ SESSION_CONFIGS = [
 
 
     dict(
-        name='minus', display_name="Stress Test", app_sequence=['Itroduce','minus', 'payment_info'], num_demo_participants=1
+        name='minus', display_name="Stress Test", app_sequence=['Itroduce','minus', 'payment_info'], num_demo_participants=3
+    ),
+    dict(
+        name='Wordlist',
+        display_name='Word List Learning',
+        num_demo_participants=1,
+        app_sequence=['Wordlist','payment_info']
     ),
 
     dict(
-        name='Letter', display_name="Letter identification test", app_sequence=['Letter', 'payment_info'], num_demo_participants=1
+        name='Letter', display_name="Letter identification test", app_sequence=['Letter', 'payment_info'], num_demo_participants=3
     ),
     dict(
         name='ravens',
         display_name='Raven\'s Matrix',
-        num_demo_participants=1,
+        num_demo_participants=3,
         app_sequence=['ravens','payment_info']
     ),
     dict(

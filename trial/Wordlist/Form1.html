@@ -1,0 +1,41 @@
+
+{{ block title }}
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+    form{
+  width: 580px;
+  height: 200px;
+  padding: 20px;
+  border: 1.5px solid black;
+  margin: 0;
+}
+    form label{
+        font-size: 18px;
+
+    }
+    label.checkbox-inline{
+        font-weight: 600;
+    }
+</style>
+<h6>Select the words you saw in the screen before:</h6>
+{{ endblock }}
+
+{{ block content }}
+
+<div class="container">
+<form>
+
+  <label class="checkbox-inline" > <input type="checkbox" name="v1" value="bike">hello</label>
+
+  <label class="checkbox-inline" ><input type="checkbox" name="v2" value="car"> I have a car</label>
+
+  <label class="checkbox-inline" ><input type="checkbox"  name="v3" value="boat"> I have a boat</label>
+
+</form>
+</div>
+
+<br>
+    {{ next_button }}
+
+{{ endblock }}
