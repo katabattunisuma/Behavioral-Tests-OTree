@@ -1,0 +1,74 @@
+
+{{ block title }}
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+    form{
+  width: 1050px;
+  height: 220px;
+  padding: 20px;
+  border: 1.5px solid black;
+  margin: 0;
+}
+    form label{
+        font-size: 18px;
+
+    }
+    label.checkbox-inline{
+        font-weight: 600;
+    }
+</style>
+<h6>Select the words you saw in the screen before:</h6>
+{{ endblock }}
+
+{{ block content }}
+
+<div class="container">
+<form>
+<label class="checkbox-inline" > <input type="checkbox" name="v1" value="distribution">distribution</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v2" value="commodity">commodity</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v3" value="injury">injury</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v4" value="phase">phase</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v5" value="features">features</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v6" value="objective">objective</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v7" value="mutual">mutual</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v8" value="derived">derived</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v9" value="aspects">aspects</label><br>
+<label class="checkbox-inline" > <input type="checkbox" name="v10" value="acquisition">acquisition</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v11" value="trend">trend</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v12" value="generated">generated</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v13" value="final">final</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v14" value="principal">principal</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v15" value="rational">rational</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v16" value="finite">finite</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v17" value="appendix">appendix</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v18" value="assurance">assurance</label><br>
+<label class="checkbox-inline" > <input type="checkbox" name="v19" value="investment">investment</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v20" value="ideology">ideology</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v21" value="dynamic">dynamic</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v22" value="impact">impact</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v23" value="registered">registered</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v24" value="economic">economic</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v25" value="retained">retained</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v26" value="export">export</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v27" value="unified">unified</label><br>
+<label class="checkbox-inline" > <input type="checkbox" name="v28" value="relaxed ">relaxed </label>
+<label class="checkbox-inline" > <input type="checkbox" name="v29" value="hence">hence</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v30" value="option">option</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v31" value="complex">complex</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v32" value="authority">authority</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v33" value="administration">administration</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v34" value="focus">focus</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v35" value="obtained">obtained</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v36" value="identified">identified</label><br>
+<label class="checkbox-inline" > <input type="checkbox" name="v37" value="job">job</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v38" value="institute">institute</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v39" value="device">device</label>
+<label class="checkbox-inline" > <input type="checkbox" name="v40" value="range ">range </label>
+</form>
+</div>
+
+<br>
+    {{ next_button }}
+
+{{ endblock }}
