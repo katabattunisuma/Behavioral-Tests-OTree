@@ -81,4 +81,4 @@ class Final_Results(Page):
 
 
 
-page_sequence = [Direction,MyPage, Results,Final_Results]
+page_sequence = [Direction,MyPage,Final_Results]
