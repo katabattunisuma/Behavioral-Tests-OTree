@@ -1,6 +1,6 @@
 from otree.api import *
 import random
-
+from iomotions.otree.pages import ScenePage
 doc = """
 Your app description
 """
@@ -10,6 +10,9 @@ class C(BaseConstants):
     NAME_IN_URL = 'Hidden_lies'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 10
+
+class QuizPage(ScenePage):
+    scene_name = 'Hidden_lies'
 
 
 class Subsession(BaseSubsession):

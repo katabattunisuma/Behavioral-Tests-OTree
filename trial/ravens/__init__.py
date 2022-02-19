@@ -4,9 +4,11 @@ import time
 from otree.api import *
 
 from . import models
+from iomotions.otree.pages import ScenePage
 
+class QuizPage(ScenePage):
+    scene_name = 'Ravens'
 
-author = 'Huanren Zhang'
 doc = """
 Raven's progressive matrices test measuring cognitive ability
 """
