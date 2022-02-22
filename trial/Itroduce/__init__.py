@@ -4,10 +4,10 @@ from otree.api import *
 doc = """
 Your app description
 """
-from iomotions.otree.pages import ScenePage
+#from iomotions.otree.pages import ScenePage
 
-class QuizPage(ScenePage):
-    scene_name = 'Introduction'
+'''class QuizPage(ScenePage):
+    scene_name = 'Introduction' '''
 
 class C(BaseConstants):
     NAME_IN_URL = 'Itroduce'

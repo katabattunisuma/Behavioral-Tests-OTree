@@ -4,10 +4,10 @@ import random
 doc = """
 Your app description
 """
-from iomotions.otree.pages import ScenePage
+#from iomotions.otree.pages import ScenePage
 
-class QuizPage(ScenePage):
-    scene_name = 'HotnLaury'
+'''class QuizPage(ScenePage):
+    scene_name = 'HotnLaury' '''
 
 class C(BaseConstants):
     NAME_IN_URL = 'HoltnLaury'

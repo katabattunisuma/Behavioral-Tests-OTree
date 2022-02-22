@@ -6,15 +6,15 @@ from otree.models import player
 doc = """
 Your app description
 """
-from iomotions.otree.pages import ScenePage
+#from iomotions.otree.pages import ScenePage
 
-class QuizPage(ScenePage):
-    scene_name = 'Stress Test'
+'''class QuizPage(ScenePage):
+    scene_name = 'Stress Test' '''
 
 class C(BaseConstants):
     NAME_IN_URL = 'minus'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 3
+    NUM_ROUNDS = 30
     Payment_for_one_correct = 1
 
 
@@ -42,7 +42,7 @@ class Direction(Page):
 class MyPage(Page):
     form_model = "player"
     form_fields = ["number_entered"]
-    timeout_seconds = 10
+    timeout_seconds = 7
     @staticmethod
     def vars_for_template(player):
         number1 = random.randint(1000, 9999)

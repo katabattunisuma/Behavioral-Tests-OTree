@@ -5,10 +5,10 @@ import string
 doc = """
 Your app description
 """
-from iomotions.otree.pages import ScenePage
+#from iomotions.otree.pages import ScenePage
 
-class QuizPage(ScenePage):
-    scene_name = 'LetterIdentification'
+'''class QuizPage(ScenePage):
+    scene_name = 'LetterIdentification' '''
 
 class C(BaseConstants):
     NAME_IN_URL = 'Letter'
