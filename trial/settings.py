@@ -6,39 +6,39 @@ SESSION_CONFIGS = [
 
 
     dict(
-        name='minus', display_name="Stress Test", app_sequence=['Itroduce','minus', 'payment_info'], num_demo_participants=3
+        name='minus', display_name="Stress Test", app_sequence=['Itroduce','minus'], num_demo_participants=3
     ),
     dict(
         name='Wordlist',
         display_name='Word List Learning',
         num_demo_participants=1,
-        app_sequence=['Wordlist','payment_info']
+        app_sequence=['Wordlist']
     ),
 
     dict(
-        name='Letter', display_name="Letter identification test", app_sequence=['Letter', 'payment_info'], num_demo_participants=3
+        name='Letter', display_name="Letter identification test", app_sequence=['Letter'], num_demo_participants=3
     ),
     dict(
         name='ravens',
         display_name='Raven\'s Matrix',
         num_demo_participants=3,
-        app_sequence=['ravens','payment_info']
+        app_sequence=['ravens']
     ),
     dict(
         name='HoltnLaury',
         display_name='Holt and Laury',
         num_demo_participants=1,
-        app_sequence=['HoltnLaury','payment_info']
+        app_sequence=['HoltnLaury']
     ),
     dict(
         name='Hidden_lies',
         display_name='Hidden Lies Task',
         num_demo_participants=1,
-        app_sequence=['Hidden_lies','payment_info']
+        app_sequence=['Hidden_lies']
     ),
 
     dict(
-        name='survey',  display_name='Survey', app_sequence=['survey', 'payment_info'], num_demo_participants=1
+        name='survey',  display_name='Survey', app_sequence=['survey'], num_demo_participants=1
     ),
 
 ]
@@ -65,8 +65,23 @@ USE_POINTS = False
 
 ROOMS = [
     dict(
-        name='Session_1',
-        display_name='Session_1',
+        name='Control_Base',
+        display_name='Control_Base',
+        participant_label_file='_rooms/econ101.txt',
+    ),
+dict(
+        name='Experimental_both',
+        display_name='Experimental_both',
+        participant_label_file='_rooms/econ101.txt',
+    ),
+dict(
+        name='Experimental_views',
+        display_name='Experimental_views',
+        participant_label_file='_rooms/econ101.txt',
+    ),
+dict(
+        name='Experimental_scent',
+        display_name='Experimental_scent',
         participant_label_file='_rooms/econ101.txt',
     ),
     dict(name='live_demo', display_name='Room for live demo (no participant labels)'),

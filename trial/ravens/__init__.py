@@ -12,7 +12,7 @@ from . import models
 doc = """
 Raven's progressive matrices test measuring cognitive ability
 """
-
+arr=[0,1,2,3,4,9,11,7,8]
 
 class Constants(BaseConstants):
     name_in_url = 'ravens'
@@ -36,7 +36,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     final_tokens=models.IntegerField(initial=0)
     answer = models.IntegerField(choices=[1, 2, 3, 4, 5, 6, 7, 8])
-    ans_correct = models.BooleanField()
+    ans_correct = models.IntegerField(initial=0)
 
 
 # FUNCTIONS
@@ -90,13 +90,20 @@ class QuestionPage(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        return {'image_path': 'ravens/{}.jpg'.format(player.round_number)}
-
+        return {'image_path': 'ravens/{}.jpg'.format(arr[player.round_number])}
+        #return {'image_path': 'ravens/9.jpg'.format(player.round_number)}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         if timeout_happened:
             player.answer = 0
-        player.ans_correct = player.answer == Constants.answer_keys[player.round_number - 1]
+        if player.answer == Constants.answer_keys[arr[player.round_number]-1]:
+            if player.round_number == 4 or player.round_number == 7:
+                player.ans_correct = 1
+            elif player.round_number == 1 or player.round_number == 2 or player.round_number == 5:
+                player.ans_correct = 2
+            else:
+                player.ans_correct = 4
+
         player.participant.vars['payoff_ravens'] += (
             player.ans_correct * Constants.payment_per_question
         )
@@ -122,8 +129,8 @@ class Results(Page):
         all_players = player.in_all_rounds()
         player.final_tokens = 0
         for temp in all_players:
-            if temp.payoff !=0:
-                player.final_tokens += 2
+            if temp.payoff != 0:
+                player.final_tokens += temp.ans_correct
         return {
             'total_correct': sum([p.ans_correct for p in player.in_all_rounds()]),
             'earnings': sum([p.ans_correct for p in player.in_all_rounds()])

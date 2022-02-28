@@ -1,3 +1,5 @@
+import time
+
 from otree.api import *
 import random
 import string

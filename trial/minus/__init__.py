@@ -42,7 +42,7 @@ class Direction(Page):
 class MyPage(Page):
     form_model = "player"
     form_fields = ["number_entered"]
-    timeout_seconds = 7
+    timeout_seconds = 8
     @staticmethod
     def vars_for_template(player):
         number1 = random.randint(1000, 9999)
@@ -74,7 +74,10 @@ class Results(Page):
         else:
             player.note = "You got it right!! Keep Going."
 
-
+class Example(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == 1
 
 class Final_Results(Page):
     form_model = "player"
@@ -89,11 +92,11 @@ class Final_Results(Page):
         player.final_tokens=0
         for temp in all_players:
             if temp.payoff == 1:
-                player.final_tokens+=1
+                player.final_tokens += 1
             else:
                 player.final_tokens=0
 
 
 
-page_sequence = [Direction,MyPage,Results,Final_Results]
+page_sequence = [Direction,Example,MyPage,Results,Final_Results]
 

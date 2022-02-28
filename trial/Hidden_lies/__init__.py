@@ -52,7 +52,7 @@ class Mypage(Page):
 
     @staticmethod
     def vars_for_template(player):
-        number1 = random.randint(3,10)
+        number1 = random.randint(3,8)
         return {
             "number1": number1,
         }
