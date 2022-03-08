@@ -17,6 +17,7 @@ class C(BaseConstants):
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 5
     Payment_for_one_correct=1
+    minutes_given = 4
 
 
 class Subsession(BaseSubsession):
@@ -40,10 +41,17 @@ class Direction(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
+
+
+
 class MyPage(Page):
     form_model = "player"
     form_fields = ["number_entered"]
-    timeout_seconds = 120
+    #timeout_seconds = 120
+
+    @staticmethod
+    def get_timeout_seconds(player: Player):
+        return player.participant.vars['expiry_timestamp'] - time.time()
 
     @staticmethod
     def vars_for_template(player: Player):
@@ -85,9 +93,18 @@ class Final_Results(Page):
             '''else:
                 player.final_tokens=0'''
 
+class Example(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == 1
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        # user has 5 minutes to complete as many pages as possible
+        player.participant.vars['expiry_timestamp'] = time.time() + C.minutes_given * 60
 
 class Results(Page):
     pass
 
 
-page_sequence = [Direction,MyPage,Final_Results]
+page_sequence = [Direction, Example,MyPage,Final_Results]

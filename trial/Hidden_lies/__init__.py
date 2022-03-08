@@ -9,7 +9,7 @@ Your app description
 class C(BaseConstants):
     NAME_IN_URL = 'Hidden_lies'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 10
+    NUM_ROUNDS = 20
 
 '''class QuizPage(ScenePage):
     scene_name = 'Hidden_lies'
@@ -27,6 +27,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     number_entered = models.IntegerField(label="How many tokens do you want to send to player 2",max=10,min=0)
     result1 = models.IntegerField()
+    secret_number=models.IntegerField()
 
 
 # PAGES
@@ -53,6 +54,7 @@ class Mypage(Page):
     @staticmethod
     def vars_for_template(player):
         number1 = random.randint(3,8)
+        player.secret_number = number1
         return {
             "number1": number1,
         }

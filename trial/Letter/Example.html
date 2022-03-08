@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+<h4 style="text-align: center">Example Question</h4>
+{% endblock %}
+
+{% block content %}
+
+    <div style="text-align:center">
+    <img src="{% static "ravens/letter_example.png" %}"/ width="500" height="350">
+    </div>
+
+
+    <div style="text-align:center">
+        <p > The correct answer is 8.<br>These are not counted towards your earnings.<br>
+Please raise your hand if you have questions, else click next. </p>
+
+    {% next_button %}
+    </div>
+
+{% endblock %}
