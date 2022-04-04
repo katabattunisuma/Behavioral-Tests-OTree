@@ -16,7 +16,7 @@ SESSION_CONFIGS = [
     ),
 
     dict(
-        name='Letter', display_name="Letter identification test", app_sequence=['Letter'], num_demo_participants=3
+        name='Letter', display_name="Letter identification test", app_sequence=['Letter'], num_demo_participants=1
     ),
     dict(
         name='ravens',

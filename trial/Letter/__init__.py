@@ -1,5 +1,4 @@
 import time
-
 from otree.api import *
 import random
 import string
@@ -15,8 +14,8 @@ Your app description
 class C(BaseConstants):
     NAME_IN_URL = 'Letter'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 5
-    Payment_for_one_correct=1
+    NUM_ROUNDS = 10
+    Payment_for_one_correct = 1
     minutes_given = 4
 
 
@@ -32,6 +31,7 @@ class Player(BasePlayer):
     number_entered = models.IntegerField(label="Enter your answer")
     result1 = models.IntegerField()
     final_tokens = models.IntegerField(initial=0)
+
     #my_page_timeout_seconds = models.IntegerField(initial=120)
 
 
@@ -73,8 +73,7 @@ class MyPage(Page):
 
         if player.number_entered == player.result1:
             player.payoff += C.Payment_for_one_correct
-        else:
-            player.payoff = 0
+
 
 class Final_Results(Page):
     form_model = "player"
@@ -92,7 +91,7 @@ class Final_Results(Page):
                 player.final_tokens+=1
             '''else:
                 player.final_tokens=0'''
-
+        player.payoff = player.final_tokens * C.Payment_for_one_correct
 class Example(Page):
     @staticmethod
     def is_displayed(player: Player):

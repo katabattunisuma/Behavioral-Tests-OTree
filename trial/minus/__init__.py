@@ -14,7 +14,7 @@ Your app description
 class C(BaseConstants):
     NAME_IN_URL = 'minus'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 30
+    NUM_ROUNDS = 60
     Payment_for_one_correct = 1
 
 
@@ -47,6 +47,8 @@ class MyPage(Page):
     def vars_for_template(player):
         number1 = random.randint(1000, 9999)
         number2 = random.randint(10, 99)
+        if number2 % 2 == 0:
+            number2 += 1
         player.result1 = number1-number2
 
         return{
