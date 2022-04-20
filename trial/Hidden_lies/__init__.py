@@ -1,5 +1,6 @@
 from otree.api import *
 import random
+from iomotions.otree.pages import ScenePage
 #from iomotions.otree.pages import ScenePage
 doc = """
 Your app description
@@ -31,22 +32,22 @@ class Player(BasePlayer):
 
 
 # PAGES
-class Player1(Page):
+class Player1(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
 
-class Direction(Page):
+class Direction(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
 
-class Quizpage(Page):
+class Quizpage(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
 
-class Mypage(Page):
+class Mypage(ScenePage):
     form_model = "player"
     form_fields = ["number_entered"]
     #timeout_seconds = 10
@@ -64,10 +65,10 @@ class Mypage(Page):
 
         player.payoff = 10-player.number_entered
 
-class Temp(Page):
+class Temp(ScenePage):
     pass
 
-class Results(Page):
+class Results(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == C.NUM_ROUNDS

@@ -4,7 +4,7 @@ import time
 from otree.api import *
 
 from . import models
-#from iomotions.otree.pages import ScenePage
+from iomotions.otree.pages import ScenePage
 
 '''class QuizPage(ScenePage):
     scene_name = 'Ravens' '''
@@ -48,19 +48,19 @@ def creating_session(subsession: Subsession):
 
 
 # PAGES
-class StartPage(Page):
+class StartPage(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         #if player.round_number == 1:
             #print('This is the start of Ravens tests')
         return player.round_number == 1 #and (not player.session.config['debug'])
 
-class Intro(Page):
+class Intro(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
 
-class Introduction(Page):
+class Introduction(ScenePage):
     #timeout_seconds = 120
 
     @staticmethod
@@ -73,14 +73,14 @@ class Introduction(Page):
         player.participant.vars['expiry_timestamp'] = time.time() + Constants.minutes_given * 60
 
 
-class Last(Page):
+class Last(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == Constants.num_rounds
 
 
 
-class QuestionPage(Page):
+class QuestionPage(ScenePage):
     form_model = 'player'
     form_fields = ['answer']
 
@@ -117,7 +117,7 @@ class QuestionPage(Page):
             )  # to measure in point
 
 
-class Results(Page):
+class Results(ScenePage):
     #timeout_seconds = 60
 
     @staticmethod

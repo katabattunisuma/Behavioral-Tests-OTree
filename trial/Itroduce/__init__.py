@@ -4,7 +4,7 @@ from otree.api import *
 doc = """
 Your app description
 """
-#from iomotions.otree.pages import ScenePage
+from iomotions.otree.pages import ScenePage
 
 '''class QuizPage(ScenePage):
     scene_name = 'Introduction' '''
@@ -28,13 +28,13 @@ class Player(BasePlayer):
 
 
 # PAGES
-class Page1(Page):
+class Page1(ScenePage):
     pass
 
-class Page2(Page):
+class Page2(ScenePage):
     pass
 
-class MyPage(Page):
+class MyPage(ScenePage):
     pass
 
 
@@ -42,7 +42,7 @@ class ResultsWaitPage(WaitPage):
     pass
 
 
-class Results(Page):
+class Results(ScenePage):
     pass
 
 

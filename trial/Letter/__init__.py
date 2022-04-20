@@ -6,7 +6,7 @@ import string
 doc = """
 Your app description
 """
-#from iomotions.otree.pages import ScenePage
+from iomotions.otree.pages import ScenePage
 
 '''class QuizPage(ScenePage):
     scene_name = 'LetterIdentification' '''
@@ -37,14 +37,14 @@ class Player(BasePlayer):
 
 
 # PAGES
-class Direction(Page):
+class Direction(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
 
 
 
-class MyPage(Page):
+class MyPage(ScenePage):
     form_model = "player"
     form_fields = ["number_entered"]
     #timeout_seconds = 120
@@ -75,7 +75,7 @@ class MyPage(Page):
             player.payoff += C.Payment_for_one_correct
 
 
-class Final_Results(Page):
+class Final_Results(ScenePage):
     form_model = "player"
     #form_fields = ["final_tokens"]
     @staticmethod
@@ -92,7 +92,7 @@ class Final_Results(Page):
             '''else:
                 player.final_tokens=0'''
         player.payoff = player.final_tokens * C.Payment_for_one_correct
-class Example(Page):
+class Example(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
@@ -102,7 +102,7 @@ class Example(Page):
         # user has 5 minutes to complete as many pages as possible
         player.participant.vars['expiry_timestamp'] = time.time() + C.minutes_given * 60
 
-class Results(Page):
+class Results(ScenePage):
     pass
 
 

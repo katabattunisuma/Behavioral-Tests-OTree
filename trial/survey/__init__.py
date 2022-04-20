@@ -1,6 +1,6 @@
 from otree.api import *
 
-
+from iomotions.otree.pages import ScenePage
 class C(BaseConstants):
     NAME_IN_URL = 'survey'
     PLAYERS_PER_GROUP = None
@@ -188,18 +188,18 @@ class Player(BasePlayer):
 
 # FUNCTIONS
 # PAGES
-class Form1(Page):
+class Form1(ScenePage):
     form_model = 'player'
     form_fields = ['gender', 'age','identification','education','level','major','hours_classes','hours_work','work_schedule']
     #form_fields2=['identification']
-class Form2(Page):
+class Form2(ScenePage):
     form_model = 'player'
     form_fields = ['tired','hours_sleep','best_time','tired_level','feel_best','personality']
-class Form3(Page):
+class Form3(ScenePage):
     form_model = 'player'
     form_fields = ['stress_level','mental_math','mini_break','outdoor_time','objective','surroundings','indoor_conditions','screen_time','proficiency']
 
-class CognitiveReflectionTest(Page):
+class CognitiveReflectionTest(ScenePage):
     form_model = 'player'
     form_fields = ['crt_bat', 'crt_widget', 'crt_lake']
 

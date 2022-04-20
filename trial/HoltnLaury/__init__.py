@@ -4,7 +4,7 @@ import random
 doc = """
 Your app description
 """
-#from iomotions.otree.pages import ScenePage
+from iomotions.otree.pages import ScenePage
 
 '''class QuizPage(ScenePage):
     scene_name = 'HotnLaury' '''
@@ -33,17 +33,17 @@ class Player(BasePlayer):
     payoff_if_dice_is_1 = models.CurrencyField()
     payoff_if_dice_is_2to10 = models.CurrencyField()
 # PAGES
-class MyPage(Page):
+class MyPage(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
 
-class Question(Page):
+class Question(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
 
-class Decision(Page):
+class Decision(ScenePage):
     form_model = "player"
     form_fields = ["decision_made"]
     timeout_seconds = 30
@@ -82,7 +82,7 @@ class Decision(Page):
 
 
 
-class Results(Page):
+class Results(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == C.NUM_ROUNDS

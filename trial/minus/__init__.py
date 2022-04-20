@@ -1,5 +1,7 @@
 from otree.api import *
 import random
+from iomotions.otree.pages import ScenePage
+#start_scene_recording(ip_address, scene_name, scene_description = '')
 
 from otree.models import player
 
@@ -35,11 +37,11 @@ class Player(BasePlayer):
 
 
 # PAGES
-class Direction(Page):
+class Direction(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
-class MyPage(Page):
+class MyPage(ScenePage):
     form_model = "player"
     form_fields = ["number_entered"]
     timeout_seconds = 8
@@ -65,7 +67,7 @@ class MyPage(Page):
             player.payoff = 0
 
 
-class Results(Page):
+class Results(ScenePage):
     form_model = "player"
     timeout_seconds = 2
 
@@ -76,12 +78,12 @@ class Results(Page):
         else:
             player.note = "You got it right!! Keep Going."
 
-class Example(Page):
+class Example(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
 
-class Final_Results(Page):
+class Final_Results(ScenePage):
     form_model = "player"
     #form_fields = ["final_tokens"]
     @staticmethod
@@ -99,6 +101,6 @@ class Final_Results(Page):
                 player.final_tokens=0
 
 
-
+#end_scene_recording(ip_address, scene_name)
 page_sequence = [Direction,Example,MyPage,Results,Final_Results]
 
