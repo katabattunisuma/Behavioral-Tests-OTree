@@ -147,7 +147,6 @@ class Results(ScenePage):
 
 
 page_sequence = [
-    #StartPage,
     Intro,
     Introduction,
     QuestionPage,

@@ -10,7 +10,11 @@ Your app description
 class C(BaseConstants):
     NAME_IN_URL = 'Hidden_lies'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 20
+    percent = random.randint(1, 100)
+    if percent < 25:
+        NUM_ROUNDS = random.randint(20, 27)
+    else:
+        NUM_ROUNDS = 20
 
 '''class QuizPage(ScenePage):
     scene_name = 'Hidden_lies'
@@ -74,4 +78,4 @@ class Results(ScenePage):
         return player.round_number == C.NUM_ROUNDS
 
 
-page_sequence = [Direction,Player1,Quizpage, Mypage,Temp, Results]
+page_sequence = [Direction,Player1,Quizpage, Mypage, Results]
