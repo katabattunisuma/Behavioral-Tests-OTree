@@ -8,6 +8,11 @@ SESSION_CONFIGS = [
     dict(
         name='minus', display_name="Stress Test", app_sequence=['Itroduce','minus'], num_demo_participants=3
     ),
+
+    dict(
+        name='Letter', display_name="Letter identification test", app_sequence=['Letter'], num_demo_participants=1
+    ),
+
     dict(
         name='Wordlist',
         display_name='Word List Learning',
@@ -15,9 +20,7 @@ SESSION_CONFIGS = [
         app_sequence=['Wordlist']
     ),
 
-    dict(
-        name='Letter', display_name="Letter identification test", app_sequence=['Letter'], num_demo_participants=1
-    ),
+
     dict(
         name='ravens',
         display_name='Raven\'s Matrix',
@@ -32,7 +35,7 @@ SESSION_CONFIGS = [
     ),
     dict(
         name='Hidden_lies',
-        display_name='Hidden Lies Task',
+        display_name='Hidden Lies',
         num_demo_participants=1,
         app_sequence=['Hidden_lies']
     ),
@@ -89,7 +92,7 @@ dict(
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
-ADMIN_PASSWORD = environ.get('suma')
+# ADMIN_PASSWORD = environ.get('suma')
 
 DEMO_PAGE_INTRO_HTML = """
 Here are some oTree games.

@@ -17,7 +17,7 @@ arr=[0,1,2,3,4,9,11,7,8]
 class Constants(BaseConstants):
     name_in_url = 'ravens'
     players_per_group = None
-    minutes_given = 5
+    minutes_given = 1
     payment_per_question = 1
     payment_in_points = 2
     num_rounds = 8
@@ -46,6 +46,9 @@ def creating_session(subsession: Subsession):
         for p in subsession.get_players():
             p.participant.vars['payoff_ravens'] = 0
 
+
+def get_timeout_seconds(player):
+    return player.participant.vars['expiry_timestamp'] - time.time()
 
 # PAGES
 class StartPage(ScenePage):
@@ -81,12 +84,19 @@ class Last(ScenePage):
 
 
 class QuestionPage(ScenePage):
+    timer_text = 'Total time left to complete this section:'
+
     form_model = 'player'
     form_fields = ['answer']
+    get_timeout_seconds = get_timeout_seconds
 
     @staticmethod
     def get_timeout_seconds(player: Player):
         return player.participant.vars['expiry_timestamp'] - time.time()
+
+    @staticmethod
+    def is_displayed(player):
+        return get_timeout_seconds(player) > 1
 
     @staticmethod
     def vars_for_template(player: Player):
@@ -131,19 +141,26 @@ class Results(ScenePage):
         for temp in all_players:
             if temp.payoff != 0:
                 player.final_tokens += temp.ans_correct
+
+        if player.in_round(8).answer != 0:
+            player.final_tokens += 1
+
         return {
-            'total_correct': sum([p.ans_correct for p in player.in_all_rounds()]),
+            'total_correct': player.final_tokens,
             'earnings': sum([p.ans_correct for p in player.in_all_rounds()])
             * Constants.payment_per_question,
         }
 
-    @staticmethod
+    ''' @staticmethod
     def before_next_page(player: Player, timeout_happened):
         for p in player.subsession.get_players():
             p.participant.vars['payoff_ravens'] = (
                 sum([p.ans_correct for p in player.in_all_rounds()])
                 * Constants.payment_per_question
-            )
+            )'''
+
+
+
 
 
 page_sequence = [

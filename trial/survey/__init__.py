@@ -26,11 +26,13 @@ class Player(BasePlayer):
     identification = models.StringField(
         choices=[['Non-Hispanic White', 'Non-Hispanic White'], ['Non-Hispanic Black', 'Non-Hispanic Black'],
                  ['Non-Hispanic Asian', 'Non-Hispanic Asian'],
-                 ['Mexican American', 'Mexican American'], ['Other Hispanic', 'Other Hispanic'],
+                 ['Mexican American', 'Mexican American'],['Other Hispanic', 'Other Hispanic'], ['Others', 'Others'],
                  ['Don\'t want to say', 'Don\'t want to say']],
         label='What would you best identify as?',
         widget=widgets.RadioSelect,
     )
+
+    other_category = models.StringField(label='If you selected Others for the above question, please specify.')
     education = models.StringField(
         choices=[['Bachelors', 'Bachelors'], ['Masters', 'Masters'],
                  ['PhD/Doctorate', 'PhD/Doctorate'],
@@ -45,7 +47,7 @@ class Player(BasePlayer):
         label='Which is your class?',
         widget=widgets.RadioSelect,
     )
-    major = models.LongStringField(label='What is your major? (Mention if any dual majors or minors):')
+    major = models.StringField(label='What is your major? (Mention if any dual majors or minors):')
     hours_classes = models.StringField(
         choices=[['0-1 hour', '0-1 hour'], ['1-3 hours', '1-3 hours'],
                  ['3-5 hours', '3-5 hours'],
@@ -61,18 +63,23 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
 
-    work_schedule = models.StringField(
+    '''work_schedule = models.StringField(
         choices=[['Mornings(8-Noon)', 'Mornings(8-Noon)'], ['Afternoons(Noon-5PM)', 'Afternoons(Noon-5PM)'],
                  ['Evenings(5PM-10PM)', 'Evenings(5PM-10PM)'],
                  ['Nights(Later than 10PM)', 'Nights(Later than 10PM)']],
         label='What times are your work scheduled at? (Select all that apply)',
         widget=widgets.RadioSelect,
-    )
+    )'''
+    work_schedule = models.StringField(label='What times are your work scheduled at? <br> 1. Mornings(8-Noon) <br>'
+                                             '2.Afternoons(Noon-5PM) <br>'
+                                             '3. Evenings(5PM-10PM) <br>'
+                                             '4. Nights(Later than 10PM) <br>'
+                                             'Enter all that apply as comma separated values Eg: 1,3')
     tired = models.StringField(
         choices=[['8-9PM', '8-9PM'], ['9-10:15PM', '9-10:15PM'],
                  ['10:15-12:30PM', '10:15-12:30PM'],
                  ['12:30-1:45AM', '12:30-1:45AM'],['1:45-3AM', '1:45-3AM'],['3AM or later', '3AM or later']],
-        label='At what time in the evnenings,do you feel tired and as a result, in need of sleep?',
+        label='At what time in the evenings,do you feel tired and as a result, in need of sleep?',
         widget=widgets.RadioSelect,
     )
     hours_sleep = models.StringField(
@@ -188,20 +195,23 @@ class Player(BasePlayer):
 
 # FUNCTIONS
 # PAGES
-class Form1(ScenePage):
+class Form1(Page):
     form_model = 'player'
-    form_fields = ['gender', 'age','identification','education','level','major','hours_classes','hours_work','work_schedule']
+    form_fields = ['gender', 'age','identification','other_category','education','level','major','hours_classes','hours_work','work_schedule']
     #form_fields2=['identification']
-class Form2(ScenePage):
+class Form2(Page):
     form_model = 'player'
     form_fields = ['tired','hours_sleep','best_time','tired_level','feel_best','personality']
-class Form3(ScenePage):
+class Form3(Page):
     form_model = 'player'
     form_fields = ['stress_level','mental_math','mini_break','outdoor_time','objective','surroundings','indoor_conditions','screen_time','proficiency']
 
-class CognitiveReflectionTest(ScenePage):
+class CognitiveReflectionTest(Page):
     form_model = 'player'
     form_fields = ['crt_bat', 'crt_widget', 'crt_lake']
 
+class Thankyou(Page):
+    form_model = 'player'
 
-page_sequence = [Form1,Form2,Form3, CognitiveReflectionTest]
+
+page_sequence = [Form1,Form2, Form3, Thankyou]

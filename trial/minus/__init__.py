@@ -16,7 +16,7 @@ Your app description
 class C(BaseConstants):
     NAME_IN_URL = 'minus'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 60
+    NUM_ROUNDS = 20
     Payment_for_one_correct = 1
 
 

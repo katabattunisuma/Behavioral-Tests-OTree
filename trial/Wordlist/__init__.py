@@ -241,7 +241,7 @@ class Form1(ScenePage):
     form_model = 'player'
     form_fields = ['v1', 'v2', 'v3', 'v4', 'v5', 'v6', 'v7','v8','v9','v10','v11','v12','v13','v14','v15','v16','v17','v18','v19','v20','v21', 'v22', 'v23','v24','v25','v26','v27','v28','v29','v30','v31','v32','v33','v34','v35','v36','v37','v38','v39','v40','v41','v42','v43','v44','v45']
     timeout_seconds = 45
-    @staticmethod
+
     def before_next_page(player: Player, timeout_happened):
         #player.final_tokens=0
         if player.v1 == True:
@@ -275,6 +275,18 @@ class Form1(ScenePage):
         if player.v42 == True:
             player.final_tokens1 += 1
 
+    @staticmethod
+    def error_message(player, values):
+        total = 0
+        for i in values:
+            if values[i]==True:
+                total+=1
+        if total>15:
+            return 'Do not select more than 15 words'
+
+
+        '''if values['int1'] + values['int2'] + values['int3'] != 100:
+            return 'The numbers must add up to 100'''
 
 class MyPage1(ScenePage):
     form_model = "player"
@@ -332,6 +344,14 @@ class Form2(ScenePage):
         if player.v89 == True:
             player.final_tokens2 += 1
 
+    @staticmethod
+    def error_message(player, values):
+        total = 0
+        for i in values:
+            if values[i] == True:
+                total += 1
+        if total > 15:
+            return 'Do not select more than 15 words'
 
 class MyPage2(ScenePage):
     form_model = "player"
@@ -390,6 +410,14 @@ class Form3(ScenePage):
         if player.v132 == True:
             player.final_tokens3 += 1
 
+    @staticmethod
+    def error_message(player, values):
+        total = 0
+        for i in values:
+            if values[i] == True:
+                total += 1
+        if total > 15:
+            return 'Do not select more than 15 words'
 
 class MyPage3(ScenePage):
     form_model = "player"
