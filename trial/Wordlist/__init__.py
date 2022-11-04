@@ -217,6 +217,11 @@ class Player(BasePlayer):
 
 
 # PAGES
+
+class Example(ScenePage):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == 1
 class MyPage(ScenePage):
     form_model = "player"
     #form_fields = ["number_entered"]
@@ -498,4 +503,4 @@ class Results(ScenePage):
     pass
 
 
-page_sequence = [Direction, MyPage, Form1, MyPage1, Form2, MyPage2, Form3, MyPage3, Form4, Results]
+page_sequence = [Direction, Example, MyPage, Form1, MyPage1, Form2, MyPage2, Form3, MyPage3, Form4, Results]

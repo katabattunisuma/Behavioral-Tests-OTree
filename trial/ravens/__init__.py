@@ -17,7 +17,7 @@ arr=[0,1,2,3,4,9,11,7,8]
 class Constants(BaseConstants):
     name_in_url = 'ravens'
     players_per_group = None
-    minutes_given = 1
+    minutes_given = 5
     payment_per_question = 1
     payment_in_points = 2
     num_rounds = 8
@@ -35,7 +35,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     final_tokens=models.IntegerField(initial=0)
-    answer = models.IntegerField(choices=[1, 2, 3, 4, 5, 6, 7, 8])
+    answer = models.IntegerField(initial=0, choices=[1, 2, 3, 4, 5, 6, 7, 8])
     ans_correct = models.IntegerField(initial=0)
 
 
@@ -80,7 +80,6 @@ class Last(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == Constants.num_rounds
-
 
 
 class QuestionPage(ScenePage):

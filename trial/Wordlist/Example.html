@@ -1,0 +1,25 @@
+
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    <br>
+<br>
+<br>
+<h4 style="text-align: center">Example Question</h4>
+{% endblock %}
+
+{% block content %}
+
+    <div style="text-align:center">
+    <img src="{% static "ravens/Wordlist_example.png" %}"/ width="750" height="483">
+    </div>
+<br>
+
+    <div style="text-align:center">
+
+
+    {% next_button %}
+    </div>
+
+{% endblock %}
