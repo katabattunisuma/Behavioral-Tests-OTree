@@ -14,9 +14,9 @@ from iomotions.otree.pages import ScenePage
 class C(BaseConstants):
     NAME_IN_URL = 'Letter'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 10
+    NUM_ROUNDS = 12
     Payment_for_one_correct = 1
-    minutes_given = 4
+    minutes_given = 5
 
 
 class Subsession(BaseSubsession):

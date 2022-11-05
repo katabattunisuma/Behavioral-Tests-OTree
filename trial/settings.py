@@ -37,12 +37,9 @@ SESSION_CONFIGS = [
         name='Hidden_lies',
         display_name='Hidden Lies',
         num_demo_participants=1,
-        app_sequence=['Hidden_lies']
+        app_sequence=['Hidden_lies','survey']
     ),
 
-    dict(
-        name='survey',  display_name='Survey', app_sequence=['survey'], num_demo_participants=1
-    ),
 
 ]
 
