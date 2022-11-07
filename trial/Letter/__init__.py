@@ -48,6 +48,7 @@ class MyPage(ScenePage):
     form_model = "player"
     form_fields = ["number_entered"]
     #timeout_seconds = 120
+    timer_text = 'Total time left to complete this section:'
 
     @staticmethod
     def get_timeout_seconds(player: Player):
