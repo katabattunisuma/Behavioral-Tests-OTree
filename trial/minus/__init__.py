@@ -16,7 +16,7 @@ Your app description
 class C(BaseConstants):
     NAME_IN_URL = 'minus'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 20
+    NUM_ROUNDS = 2
     Payment_for_one_correct = 1
 
 
@@ -34,6 +34,7 @@ class Player(BasePlayer):
     result1 = models.IntegerField()
     final_tokens = models.IntegerField()
     note = models.StringField()
+    temp_earnings = models.IntegerField()
 
 
 # PAGES
@@ -62,9 +63,9 @@ class MyPage(ScenePage):
     def before_next_page(player: Player, timeout_happened):
 
         if player.number_entered == player.result1:
-            player.payoff += 1
+            player.temp_earnings = 1
         else:
-            player.payoff = 0
+            player.temp_earnings = 0
 
 
 class Results(ScenePage):
@@ -73,7 +74,7 @@ class Results(ScenePage):
 
     @staticmethod
     def vars_for_template(player):
-        if player.payoff == 0:
+        if player.temp_earnings == 0:
             player.note = "Oops!! <br> <h3>Your answer is wrong.</h3>"
         else:
             player.note = "You got it right!! Keep Going."
@@ -92,14 +93,14 @@ class Final_Results(ScenePage):
 
     @staticmethod
     def vars_for_template(player: Player):
-        all_players = player.in_all_rounds()
+        all_rounds = player.in_all_rounds()
         player.final_tokens=0
-        for temp in all_players:
-            if temp.payoff == 1:
+        for temp in all_rounds:
+            if temp.temp_earnings == 1:
                 player.final_tokens += 1
             else:
                 player.final_tokens=0
-
+        player.payoff = player.final_tokens
 
 #end_scene_recording(ip_address, scene_name)
 page_sequence = [Direction,Example,MyPage,Results,Final_Results]

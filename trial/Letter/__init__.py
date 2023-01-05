@@ -73,7 +73,7 @@ class MyPage(ScenePage):
     def before_next_page(player: Player,timeout_happened):
 
         if player.number_entered == player.result1:
-            player.payoff += C.Payment_for_one_correct
+            player.payoff = C.Payment_for_one_correct
 
 
 class Final_Results(ScenePage):
@@ -90,9 +90,7 @@ class Final_Results(ScenePage):
         for temp in all_players:
             if temp.payoff == 1:
                 player.final_tokens+=1
-            '''else:
-                player.final_tokens=0'''
-        player.payoff = player.final_tokens * C.Payment_for_one_correct
+
 class Example(ScenePage):
     @staticmethod
     def is_displayed(player: Player):

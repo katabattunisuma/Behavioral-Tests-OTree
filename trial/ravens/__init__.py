@@ -18,11 +18,9 @@ class Constants(BaseConstants):
     name_in_url = 'ravens'
     players_per_group = None
     minutes_given = 5
-    payment_per_question = 1
-    payment_in_points = 2
+    payment_per_question = 0.5
     num_rounds = 8
     answer_keys = [4, 2, 2, 1, 2, 7, 3, 5, 2, 5, 6, 4]
-    instructions_template = 'ravens/Instructions.html'
 
 
 class Subsession(BaseSubsession):
@@ -54,9 +52,7 @@ def get_timeout_seconds(player):
 class StartPage(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
-        #if player.round_number == 1:
-            #print('This is the start of Ravens tests')
-        return player.round_number == 1 #and (not player.session.config['debug'])
+        return player.round_number == 1
 
 class Intro(ScenePage):
     @staticmethod
@@ -100,7 +96,7 @@ class QuestionPage(ScenePage):
     @staticmethod
     def vars_for_template(player: Player):
         return {'image_path': 'ravens/{}.jpg'.format(arr[player.round_number])}
-        #return {'image_path': 'ravens/9.jpg'.format(player.round_number)}
+
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         if timeout_happened:
@@ -112,18 +108,6 @@ class QuestionPage(ScenePage):
                 player.ans_correct = 2
             else:
                 player.ans_correct = 4
-
-        player.participant.vars['payoff_ravens'] += (
-            player.ans_correct * Constants.payment_per_question
-        )
-        if Constants.payment_in_points > 0:
-            player.payoff = player.ans_correct * Constants.payment_in_points
-        else:
-            player.payoff = (
-                player.ans_correct
-                * Constants.payment_per_question
-                / player.session.config['real_world_currency_per_point']
-            )  # to measure in point
 
 
 class Results(ScenePage):
@@ -138,28 +122,18 @@ class Results(ScenePage):
         all_players = player.in_all_rounds()
         player.final_tokens = 0
         for temp in all_players:
-            if temp.payoff != 0:
+            if temp.ans_correct != 0:
                 player.final_tokens += temp.ans_correct
 
         if player.in_round(8).answer != 0:
             player.final_tokens += 1
 
+        player.payoff = player.final_tokens * Constants.payment_per_question
+
         return {
             'total_correct': player.final_tokens,
-            'earnings': sum([p.ans_correct for p in player.in_all_rounds()])
-            * Constants.payment_per_question,
+            'earnings': player.payoff,
         }
-
-    ''' @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        for p in player.subsession.get_players():
-            p.participant.vars['payoff_ravens'] = (
-                sum([p.ans_correct for p in player.in_all_rounds()])
-                * Constants.payment_per_question
-            )'''
-
-
-
 
 
 page_sequence = [

@@ -14,6 +14,7 @@ class C(BaseConstants):
     NAME_IN_URL = 'Wordlist'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
+    payment_for_one_correct = 0.75
     #OPTIONS = ['analysis','approach','area','assessment','assume','authority','available','benefit','concept','consistent','constitutional','context','contract','create','data','definition','derived','distribution','economic','environment','established','estimate','evidence','export','factors','financial','formula','function','identified','income','indicate','individual','interpretation','involved','issues','labour','legal','legislation','major','method','occur','percent','period','policy','principle ','procedure','process','required','research','response','role','section','sector','significant','similar','source','specific','structure','theory','variables ','achieve','acquisition','administration','affect','appropriate','aspects','assistance','categories','chapter','commission','community','complex','computer','conclusion','conduct','consequences','construction','consumer','credit','cultural','design','distinction','elements','equation','evaluation','features','final','focus','impact','injury','institute','investment','items','journal','maintenance','normal','obtained','participation','perceived','positive','potential','previous','primary','purchase','range ','region','regulations','relevant','resident','resources','restricted','security','sought','select','site','strategies','survey','text','traditional','transfer','alternative','circumstances','comments','compensation','components','consent','considerable','constant','constraints','contribution','convention','coordination','core','corporate','corresponding','criteria','deduction','demonstrate','document','dominant','emphasis','ensure','excluded','framework','funds','illustrated','immigration','implies','initial','instance','interaction','justification','layer','link','location','maximum','minorities','negative','outcomes','partnership','philosophy','physical','proportion','published','reaction','registered','reliance','removed','scheme','sequence','sex','shift','specified','sufficient','task','technical','techniques','technology','validity','volume','access','adequate','annual','apparent','approximated','attitudes','attributed','civil','code','commitment','communication','concentration','conference','contrast','cycle','debate','despite','dimensions','domestic','emerged','error','ethnic','goals','granted','hence','hypothesis','implementation','implications','imposed','integration','internal','investigation','job','label','mechanism','obvious','occupational','option','output','overall','parallel','parameters','phase','predicted','principal','prior','professional','project','promote','regime','resolution','retained','series','statistics','status','stress','subsequent','sum','summary','undertaken','academic','adjustment','alter','amendment','aware','capacity','challenge','clause','compounds','conflict','consultation','contact','decline','discretion','draft','enable','energy','enforcement','entities','equivalent','evolution','expansion','exposure','external','facilitate','fundamental','generated','generation','image','liberal','licence','logic','marginal','medical','mental','modified','monitoring','network','notion','objective','orientation','perspective','precise','prime','psychology ','pursue','ratio','rejected','revenue','stability','styles','substitution','sustainable','symbolic','target','transition','trend','version','welfare','whereas ','abstract','accurate','acknowledged','aggregate','allocation','assigned','attached','author','bond','brief','capable','cited','cooperative','discrimination','display','diversity','domain','edition','enhanced','estate','exceed','expert','explicit','federal','fees','flexibility','furthermore','gender','ignored','incentive','incidence','incorporated','index','inhibition','initiatives','input','instructions','intelligence','interval','lecture','migration','minimum','ministry','motivation','neutral ','nevertheless','overseas','preceding','presumption','rational','recovery','revealed','scope','subsidiary','tapes','trace','transformation','transport','underlying','utility ','adaptation','adults','advocate','aid','channel','chemical','classical','comprehensive','comprise','confirmed','contrary','converted','couple','decades','definite','deny','differentiation','disposal','dynamic','eliminate','empirical','equipment','extract','file','finite','foundation','global','grade','guarantee','hierarchical','identical','ideology','inferred','innovation','insert','intervention','isolated','media','mode','paradigm','phenomenon','priority','prohibited','publication ','quotation','release','reverse','simulation','solely','somewhat','submitted','successive','survive','thesis','topic','transmission','ultimately','unique','visible','voluntary','abandon','accompanied','accumulation','ambiguous','appendix','appreciation','arbitrary','automatically','bias','chart','clarity','conformity','commodity','complement','contemporary','contradiction','crucial','currency','denote','detected','deviation','displacement','dramatic','eventually','exhibit','exploitation','fluctuations','guidelines','highlighted','implicit','induced','inevitably','infrastructure','inspection','intensity','manipulation','minimised','nuclear','offset','paragraph','plus','practitioners','predominantly','prospect ','radical','random','reinforced','restore','revision','schedule','tension','termination','theme','thereby','uniform','vehicle','via','virtually','widespread','visual','accommodation','analogous','anticipated','assurance','attained','behalf','bulk','ceases','coherence','coincide','commenced','incompatible','concurrent','confined','controversy','conversely','device','devoted','diminished','distorted','duration','erosion','ethical','format','founded','inherent','insights','integral','intermediate','manual','mature','mediation','medium','military','minimal','mutual','norms','overlap','passive','portion','preliminary','protocol','qualitative','refine','relaxed ','restraints','revolution','rigid','route','scenario','sphere','subordinate','supplementary','suspended','team','temporary','trigger','unified','violation','vision ','adjacent','albeit','assembly','collapse','colleagues','compiled','conceived','convinced','depression','encountered','enormous','forthcoming','inclination','integrity','intrinsic','invoked','levy','likewise','nonetheless','notwithstanding','odd','ongoing','panel','persistent','posed','reluctant','so-called','straightforward','undergo','whereby']
 
 
@@ -483,6 +484,21 @@ class Form4(ScenePage):
             player.final_tokens4 += 1
 
 
+        dice = random.randint(1,4)
+        print('========================================================')
+        print('The dice roll for wordlist learning is ' + str(dice))
+        print('========================================================')
+        if dice ==1:
+            player.payoff = player.final_tokens1 * C.payment_for_one_correct
+        elif dice == 2:
+            player.payoff = player.final_tokens2 * C.payment_for_one_correct
+        elif dice ==3:
+            player.payoff = player.final_tokens3 * C.payment_for_one_correct
+        else:
+            player.payoff = player.final_tokens4 * C.payment_for_one_correct
+
+
+
 class Direction(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
@@ -493,13 +509,6 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(ScenePage):
-    '''form_model = "player"
-    @staticmethod
-    def vars_for_template(player: Player):
-        all_players = player.in_all_rounds()
-        #player.final_tokens=0
-        for temp in all_players:
-            player.final_token=temp.final_tokens'''
     pass
 
 
