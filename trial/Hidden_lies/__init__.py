@@ -16,6 +16,8 @@ class C(BaseConstants):
     else:
         NUM_ROUNDS = 20
 
+    ROUND_SELECTED = random.randint(1, NUM_ROUNDS)
+
 '''class QuizPage(ScenePage):
     scene_name = 'Hidden_lies'
     '''
@@ -35,6 +37,7 @@ class Player(BasePlayer):
     secret_number = models.IntegerField()
     ans1 = models.StringField()
     ans2 = models.StringField()
+    earnings = models.IntegerField()
     knowledge_check = models.StringField(
         choices=[['True', 'True'], ['False', 'False']],
         label='1. If the computer displays a secret number 4, you can only report or send 4 tokens to player2.',
@@ -100,7 +103,9 @@ class Mypage(ScenePage):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
 
-        player.payoff = 10-player.number_entered
+        player.earnings = 10-player.number_entered
+        if player.round_number == C.ROUND_SELECTED:
+            player.payoff = player.earnings
 
 class Temp(ScenePage):
     pass
@@ -108,7 +113,12 @@ class Temp(ScenePage):
 class Results(ScenePage):
     @staticmethod
     def is_displayed(player: Player):
+        if player.round_number == C.NUM_ROUNDS:
+            print('========================================================')
+            print('The dice roll for Hidden Lies is ' + str(C.ROUND_SELECTED))
+            print('========================================================')
         return player.round_number == C.NUM_ROUNDS
+
 
 
 page_sequence = [Direction,Player1,Quizpage, Mypage, Results]

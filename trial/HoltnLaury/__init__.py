@@ -14,6 +14,8 @@ class C(BaseConstants):
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 10
     PAYMENT_FOR_EACH_CORRECT_ANSWER = 3
+    question_selected = random.randint(1, 10)
+    dice_roll = random.randint(1, 10)
 
 
 class Subsession(BaseSubsession):
@@ -32,6 +34,7 @@ class Player(BasePlayer):
     num4 = models.FloatField()
     payoff_if_dice_is_1 = models.CurrencyField()
     payoff_if_dice_is_2to10 = models.CurrencyField()
+
 # PAGES
 class MyPage(ScenePage):
     @staticmethod
@@ -78,6 +81,16 @@ class Decision(ScenePage):
             player.payoff_if_dice_is_1 = 0
             player.payoff_if_dice_is_2to10 = 0
 
+        if C.question_selected == player.round_number:
+            print('========================================================')
+            print('The question selected for payoffs is ' + str(C.question_selected))
+            print('========================================================')
+            print('The dice roll for Holt and Laury is ' + str(C.dice_roll))
+            print('========================================================')
+            if C.dice_roll == 1:
+                player.payoff = player.payoff_if_dice_is_1
+            else:
+                player.payoff = player.payoff_if_dice_is_2to10
 
 
 
